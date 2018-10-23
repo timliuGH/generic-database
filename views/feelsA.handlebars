@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emotional States</title>
+</head>
+<body>
+	<h1>How are the Whosits feeling?</h1>
+	<h3>Emotional States of Current Whosits</h3>
+	<table>
+    <thead> 
+        <th>Name of Whosit</th>
+        <th>Emotional State</th>
+    </thead>
+    <tbody>
+        {{#each entry}} 
+        <tr> 
+            <td>{{whositID}}</td> 
+            <td>{{howsitID}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody>
+	</table>
+	<br><br>
+	<form>
+		<fieldset>
+			<legend>Enter a new Howsit for a Whosit</legend>
+
+			<label for="whosit">Whosit: </label>
+			<select id="whosit" name="whosit">
+				<option value="">Choose a Whosit</option>
+				{{#each whosit}}
+        <option value="{{whositID}}">{{whositName}}</option>
+        {{/each}}
+			</select>
+
+			<br>
+
+			<label for="howsit">Howsit: </label>
+			<select id="howsit" name="howsit">
+				<option value="">Choose an emotion</option>
+				{{#each howsit}}
+        <option value="{{howsitID}}">{{emotion}}</option>
+        {{/each}}
+			</select>
+
+			<br><br>
+
+			<input type="submit" name="feelsASubmit">
+		</fieldset>
+	</form>
+</body>
+</html>

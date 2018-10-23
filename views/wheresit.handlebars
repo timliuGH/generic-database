@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wheresit</title>
+</head>
+<body>
+	<h1>The Wheresits of Generic</h1>
+	<h3>Known Wheresits</h3>
+	<table>
+    <thead> 
+        <th>Name</th>
+        <th>Temperature</th>
+    </thead>
+    <tbody>
+        {{#each wheresit}} 
+        <tr> 
+            <td>{{wheresitName}}</td> 
+            <td>{{temperature}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody>
+	</table>
+	<br><br>
+	<form>
+		<fieldset>
+			<legend>Enter information for a new Wheresit</legend>
+
+			<label for="wheresitName">Name of Wheresit: </label>
+			<input id="wheresitName" type="text" name="wheresitName" maxlength="20" required>
+
+			<br>
+
+			<label for="temperature">Temperature: </label>
+			<input id="temperature" type="number" name="temperature" min="0" max="100" placeholder="50">
+
+			<br><br>
+
+			<input type="submit" name="wheresitSubmit">
+		</fieldset>
+	</form>
+</body>
+</html>

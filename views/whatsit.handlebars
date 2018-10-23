@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Whatsit</title>
+</head>
+<body>
+	<h1>The Whatsits of Generic</h1>
+	<h3>Available Whatsits</h3>
+	<table>
+    <thead> 
+        <th>Name</th>
+        <th>Importance</th>
+    </thead>
+    <tbody>
+        {{#each whatsit}} 
+        <tr> 
+            <td>{{whatsitName}}</td> 
+            <td>{{importance}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody>
+	</table>
+	<br><br>
+	<form>
+		<fieldset>
+			<legend>Enter information for a new Whatsit</legend>
+
+			<label for="whatsitName">Name of Whatsit: </label>
+			<input id="whatsitName" type="text" name="whatsitName" maxlength="20" required>
+
+			<br>
+
+			<label for="importance">Importance to Generic: </label>
+			<input id="importance" type="number" name="importance" min="0" max="100" placeholder="0">
+
+			<br><br>
+
+			<input type="submit" name="whatsitSubmit">
+		</fieldset>
+	</form>
+</body>
+</html>

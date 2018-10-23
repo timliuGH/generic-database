@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Howsit</title>
+</head>
+<body>
+	<h1>The Howsits of Generic</h1>
+	<h3>Possible Howsits</h3>
+	<table>
+    <thead> 
+        <th>Emotion</th>
+    </thead>
+    <tbody>
+        {{#each howsit}} 
+        <tr> 
+            <td>{{howsit}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody>
+	</table>
+	<br><br>
+	<form>
+		<fieldset>
+			<legend>Enter information for a new Howsit</legend>
+
+			<label for="emotion">Emotional state: </label>
+			<input id="emotion" type="text" name="emotion" maxlength="20" required>
+
+			<br><br>
+
+			<input type="submit" name="howsitSubmit">
+		</fieldset>
+	</form>
+</body>
+</html>

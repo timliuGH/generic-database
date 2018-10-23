@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Whysit</title>
+</head>
+<body>
+	<h1>The Whysits</h1>
+	<h3>Known Whysits</h3>
+	<table>
+    <thead> 
+        <th>Description</th>
+    </thead>
+    <tbody>
+        {{#each whysit}} 
+        <tr> 
+            <td>{{whysitDescription}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody>
+	</table>
+	<br><br>
+	<form>
+		<fieldset>
+			<legend>Enter information for a new Whysit</legend>
+
+			<label for="whysitDescription">Description of Whysit: </label>
+			<input id="whysitDescription" type="text" name="whysitDescription" maxlength="100" required>
+
+			<br><br>
+
+			<input type="submit" name="whysitSubmit">
+		</fieldset>
+	</form>
+</body>
+</html>
