@@ -7,12 +7,33 @@
       <th>Destiny</th>
   </thead>
   <tbody>
+      <tr> 
+          <td>Who1</td> 
+          <td>Place1</td> 
+          <td>Save the world</td>
+          <td><form action="/update.html"><button name="submitUpdate" value="{{whositID}}" id="updateButton">Update</button></form></td>
+          <td><form><button name="submitDelete" value="{{whositID}}" id="deleteButton" onclick="deleteMe({{whositID}})">Delete</button></form></td>
+      </tr>
+      <tr> 
+          <td>Who2</td> 
+          <td>Place2</td> 
+          <td>Go to space</td>
+          <td><form action="/update.html"><button name="submitUpdate" value="{{whositID}}" id="updateButton">Update</button></form></td>
+          <td><form><button name="submitDelete" value="{{whositID}}" id="deleteButton" onclick="deleteMe({{whositID}})">Delete</button></form></td>
+      </tr>
+      <tr> 
+          <td>Who3</td> 
+          <td>Place3</td> 
+          <td>Destroy the world</td>
+          <td><form action="/update.html"><button name="submitUpdate" value="{{whositID}}" id="updateButton">Update</button></form></td>
+          <td><form><button name="submitDelete" value="{{whositID}}" id="deleteButton" onclick="deleteMe({{whositID}})">Delete</button></form></td>
+      </tr>
       {{#each whosit}} 
       <tr> 
           <td>{{whositName}}</td> 
           <td>{{whositHome}}</td> 
           <td>{{destiny}}</td>
-          <td><form action="/update"><button name="submitUpdate" value="{{whositID}}" id="updateButton">Update</button></form></td>
+          <td><form action="/update.html"><button name="submitUpdate" value="{{whositID}}" id="updateButton">Update</button></form></td>
           <td><form><button name="submitDelete" value="{{whositID}}" id="deleteButton" onclick="deleteMe({{whositID}})">Delete</button></form></td>
       </tr> 
       {{/each}} 
@@ -31,6 +52,9 @@
 		<label for="whositHome">Home of Whosit: </label>
 		<select id="whositHome" name="whositHome" required>
 			<option value="">Choose a Wheresit</option>
+      <option value="1">Place 1</option>
+      <option value="2">Place 2</option>
+      <option value="3">Place 3</option>
 			{{#each wheresit}}
       <option value="{{wheresitID}}">{{wheresitName}}</option>
       {{/each}}
@@ -40,7 +64,10 @@
 
 		<label for="destiny">Destiny of Whosit: </label>
 		<select id="destiny" name="destiny" required>
-			<option value="">Choose a destiny</option>
+      <option value="">Choose a Whysit</option>
+      <option value="1">Save the world</option>
+      <option value="2">Go to space</option>
+			<option value="3">Destroy the world</option>
 			{{#each whysit}}
       <option value="{{whysitID}}">{{whysitDescription}}</option>
       {{/each}}
@@ -48,6 +75,6 @@
 
 		<br><br>
 
-		<input type="submit" name="whositSubmit">
+		<input type="submit" name="whositSubmit" value="Add Whosit">
 	</fieldset>
 </form>

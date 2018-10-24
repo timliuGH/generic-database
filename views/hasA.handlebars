@@ -1,52 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Jobs</title>
-</head>
-<body>
-	<h1>Who does what?</h1>
-	<h3>Whatsits Assigned to Whosits</h3>
-	<table>
-    <thead> 
-        <th>Name of Whosit</th>
-        <th>Name of Whatsit</th>
-    </thead>
-    <tbody>
-        {{#each entry}} 
-        <tr> 
-            <td>{{whositID}}</td> 
-            <td>{{whatsitID}}</td> 
-        </tr> 
-        {{/each}} 
-    </tbody>
-	</table>
-	<br><br>
-	<form>
-		<fieldset>
-			<legend>Enter a new Whatsit for a Whosit</legend>
+<h1>Who does what?</h1>
+<h3>Whatsits Assigned to Whosits</h3>
+<table>
+  <thead> 
+      <th>Name of Whosit</th>
+      <th>Name of Whatsit</th>
+  </thead>
+  <tbody>
+      <tr> 
+          <td>Who1</td> 
+          <td>Corn grower</td>
+      </tr> 
+      <tr> 
+          <td>Who1</td> 
+          <td>Chicken breeder</td>
+      </tr>
+      <tr> 
+          <td>Who1</td> 
+          <td>Tree waterer</td>
+      </tr>
+      <tr> 
+          <td>Who2</td> 
+          <td>Chicken breeder</td>
+      </tr>
+      <tr> 
+          <td>Who3</td> 
+          <td>Tree waterer</td>
+      </tr> 
+      {{#each entry}} 
+      <tr> 
+          <td>{{whosit.name}}</td> 
+          <td>{{whatsit.name}}</td>
+      </tr> 
+      {{/each}} 
+  </tbody>
+</table>
+<br><br>
+<form>
+	<fieldset>
+		<legend>Enter a new Whatsit for a Whosit</legend>
 
-			<label for="whosit">Whosit: </label>
-			<select id="whosit" name="whosit">
-				<option value="">Choose a Whosit</option>
-				{{#each whosit}}
-        <option value="{{whositID}}">{{whositName}}</option>
-        {{/each}}
-			</select>
+		<label for="whosit">Whosit: </label>
+		<select id="whosit" name="whosit">
+			<option value="">Choose a Whosit</option>
+			{{#each whosit}}
+      <option value="{{whositID}}">{{whositName}}</option>
+      {{/each}}
+		</select>
 
-			<br>
+		<br>
 
-			<label for="whatsit">Whatsit: </label>
-			<select id="whatsit" name="whatsit">
-				<option value="">Choose a Whatsit</option>
-				{{#each whatsit}}
-        <option value="{{whatsitID}}">{{whatsitName}}</option>
-        {{/each}}
-			</select>
+		<label for="whatsit">Whatsit: </label>
+		<select id="whatsit" name="whatsit">
+			<option value="">Choose a Whatsit</option>
+			{{#each whatsit}}
+      <option value="{{whatsitID}}">{{whatsitName}}</option>
+      {{/each}}
+		</select>
 
-			<br><br>
+		<br><br>
 
-			<input type="submit" name="hasASubmit">
-		</fieldset>
-	</form>
-</body>
-</html>
+		<input type="submit" name="hasASubmit" value="Add Whatsit to Whosit">
+	</fieldset>
+</form>
