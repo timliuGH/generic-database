@@ -1,5 +1,21 @@
 <h1>The Whosits of Generic</h1>
+<p>The Whosits are the inhabitants of Generic. Each Whosit has one home, or Wheresit, and one destiny, or Whysit.</p>
 <h3>Current Whosits</h3>
+<form>
+    <label for="filter">Filter by Home: </label>
+    <select id="filter" name="filter" required>
+      <option value="">Choose a Wheresit</option>
+      <option value="1">Place 1</option>
+      <option value="2">Place 2</option>
+      <option value="3">Place 3</option>
+      {{#each wheresit}}
+      <option value="{{wheresitID}}">{{wheresitName}}</option>
+      {{/each}}
+    </select>
+
+    <input type="submit" name="filterSubmit" value="filter">
+</form>
+<br>
 <table>
   <thead> 
       <th>Name</th> 
