@@ -6,32 +6,19 @@
       <th>Emotion</th>
   </thead>
   <tbody>
-      <tr> 
-          <td>happy</td> 
-      </tr>
-      <tr> 
-          <td>conflicted</td> 
-      </tr>
-      <tr> 
-          <td>ecstatic</td> 
-      </tr> 
       {{#each howsit}} 
       <tr> 
-          <td>{{howsit}}</td> 
+          <td>{{emotion}}</td> 
       </tr> 
       {{/each}} 
   </tbody>
 </table>
 <br><br>
-<form>
+<form action="/howsit" method="post">
 	<fieldset>
 		<legend>Enter information for a new Howsit</legend>
-
 		<label for="emotion">Emotional state: </label>
-		<input id="emotion" type="text" name="emotion" maxlength="20" required>
-
-		<br><br>
-
-		<input type="submit" name="howsitSubmit" value="Add Howsit">
+		<input id="emotion" type="text" name="emotion" maxlength="20" required><br><br>
+		<input type="submit" name="howsitSubmit" value="Submit">
 	</fieldset>
 </form>

@@ -7,41 +7,22 @@
       <th>Importance</th>
   </thead>
   <tbody>
-      <tr> 
-          <td>Corn grower</td> 
-          <td>70</td> 
-      </tr>
-      <tr> 
-          <td>Chicken breeder</td> 
-          <td>75</td> 
-      </tr>
-      <tr> 
-          <td>Tree waterer</td> 
-          <td>100</td> 
-      </tr> 
       {{#each whatsit}} 
       <tr> 
-          <td>{{whatsitName}}</td> 
+          <td>{{name}}</td> 
           <td>{{importance}}</td> 
       </tr> 
       {{/each}} 
   </tbody>
 </table>
 <br><br>
-<form>
+<form action="/whatsit" method="post">
 	<fieldset>
 		<legend>Enter information for a new Whatsit</legend>
-
 		<label for="whatsitName">Name of Whatsit: </label>
-		<input id="whatsitName" type="text" name="whatsitName" maxlength="20" required>
-
-		<br>
-
+		<input id="whatsitName" type="text" name="name" maxlength="20" required><br>
 		<label for="importance">Importance to Generic: </label>
-		<input id="importance" type="number" name="importance" min="0" max="100" placeholder="0">
-
-		<br><br>
-
+		<input id="importance" type="number" name="importance" min="0" max="100" placeholder="0"><br><br>
 		<input type="submit" name="whatsitSubmit" value="Add Whatsit">
 	</fieldset>
 </form>

@@ -7,55 +7,32 @@
       <th>Emotional State</th>
   </thead>
   <tbody>
-      <tr> 
-          <td>Who1</td> 
-          <td>ecstatic</td>
-          <td><form><button name="submitDelete" value="{{whositIDhowsitID}}" id="deleteButton" onclick="deleteMe({{whositIDhowsitID}})">Delete</button></form></td>
-      </tr>
-      <tr> 
-          <td>Who2</td> 
-          <td>happy</td>
-          <td><form><button name="submitDelete" value="{{whositIDhowsitID}}" id="deleteButton" onclick="deleteMe({{whositIDhowsitID}})">Delete</button></form></td>
-      </tr>
-      <tr> 
-          <td>Who3</td> 
-          <td>conflicted</td>
-          <td><form><button name="submitDelete" value="{{whositIDhowsitID}}" id="deleteButton" onclick="deleteMe({{whositIDhowsitID}})">Delete</button></form></td>
-      </tr>
       {{#each entry}} 
       <tr> 
-          <td>{{whoit.name}}</td> 
-          <td>{{howit.emotion}}</td>
-          <td><form><button name="submitDelete" value="{{whositIDhowsitID}}" id="deleteButton" onclick="deleteMe({{whositIDhowsitID}})">Delete</button></form></td>
+          <td>{{name}}</td> 
+          <td>{{emotion}}</td>
+          <td><button onclick="deleteFeelsA({{id}})">Delete</button></td>
       </tr> 
       {{/each}} 
   </tbody>
-</table>
-<br><br>
-<form>
+</table><br><br>
+<form action="/feelsA" method="post">
 	<fieldset>
 		<legend>Enter a new Howsit for a Whosit</legend>
-
 		<label for="whosit">Whosit: </label>
-		<select id="whosit" name="whosit">
+		<select id="whosit" name="whosit_id">
 			<option value="">Choose a Whosit</option>
 			{{#each whosit}}
-      <option value="{{whositID}}">{{whositName}}</option>
-      {{/each}}
-		</select>
-
-		<br>
-
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+		    </select><br>
 		<label for="howsit">Howsit: </label>
-		<select id="howsit" name="howsit">
+		<select id="howsit" name="howsit_id">
 			<option value="">Choose an emotion</option>
 			{{#each howsit}}
-      <option value="{{howsitID}}">{{emotion}}</option>
-      {{/each}}
-		</select>
-
-		<br><br>
-
-		<input type="submit" name="feelsASubmit" value="Add Howsit to Whosit">
+            <option value="{{id}}">{{emotion}}</option>
+            {{/each}}
+		</select><br><br>
+		<input type="submit" name="feelsASubmit" value="Submit">
 	</fieldset>
 </form>

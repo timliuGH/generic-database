@@ -7,59 +7,30 @@
       <th>Name of Whatsit</th>
   </thead>
   <tbody>
-      <tr> 
-          <td>Who1</td> 
-          <td>Corn grower</td>
-      </tr> 
-      <tr> 
-          <td>Who1</td> 
-          <td>Chicken breeder</td>
-      </tr>
-      <tr> 
-          <td>Who1</td> 
-          <td>Tree waterer</td>
-      </tr>
-      <tr> 
-          <td>Who2</td> 
-          <td>Chicken breeder</td>
-      </tr>
-      <tr> 
-          <td>Who3</td> 
-          <td>Tree waterer</td>
-      </tr> 
       {{#each entry}} 
       <tr> 
-          <td>{{whosit.name}}</td> 
-          <td>{{whatsit.name}}</td>
+          <td>{{whosit}}</td> 
+          <td>{{whatsit}}</td>
       </tr> 
       {{/each}} 
   </tbody>
 </table>
 <br><br>
-<form>
+<form id="addHasA" action="/hasA" method="post">
 	<fieldset>
 		<legend>Enter a new Whatsit for a Whosit</legend>
-
 		<label for="whosit">Whosit: </label>
-		<select id="whosit" name="whosit">
-			<option value="">Choose a Whosit</option>
+		<select id="whosit" name="whosit_id">
 			{{#each whosit}}
-      <option value="{{whositID}}">{{whositName}}</option>
-      {{/each}}
-		</select>
-
-		<br>
-
+            <option value="{{whosit_id}}">{{name}}</option>
+            {{/each}}
+		</select><br>
 		<label for="whatsit">Whatsit: </label>
-		<select id="whatsit" name="whatsit">
-			<option value="">Choose a Whatsit</option>
+		<select id="whatsit" name="whatsit_id">
 			{{#each whatsit}}
-      <option value="{{whatsitID}}">{{whatsitName}}</option>
-      {{/each}}
-		</select>
-
-		<br><br>
-
-		<input type="submit" name="hasASubmit" value="Add Whatsit to Whosit">
+            <option value="{{whatsit_id}}">{{name}}</option>
+            {{/each}}
+		</select><br><br>
+		<input type="submit" name="hasASubmit" value="Submit">
 	</fieldset>
 </form>

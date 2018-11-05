@@ -6,32 +6,19 @@
       <th>Description</th>
   </thead>
   <tbody>
-      <tr> 
-          <td>Save the world</td> 
-      </tr>
-      <tr> 
-          <td>Go to space</td> 
-      </tr>
-      <tr> 
-          <td>Destroy the world</td> 
-      </tr> 
       {{#each whysit}} 
       <tr> 
-          <td>{{whysitDescription}}</td> 
+          <td>{{description}}</td> 
       </tr> 
       {{/each}} 
   </tbody>
 </table>
 <br><br>
-<form>
+<form action="/whysit" method="post">
 	<fieldset>
 		<legend>Enter information for a new Whysit</legend>
-
 		<label for="whysitDescription">Description of Whysit: </label>
-		<input id="whysitDescription" type="text" name="whysitDescription" maxlength="100" required>
-
-		<br><br>
-
-		<input type="submit" name="whysitSubmit" value="Add Whysit">
+		<input id="whysitDescription" type="text" name="description" maxlength="100" required><br><br>
+		<input type="submit" name="whysitSubmit" value="Submit">
 	</fieldset>
 </form>
