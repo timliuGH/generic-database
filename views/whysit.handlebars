@@ -1,5 +1,13 @@
 <h1>The Whysits</h1>
 <p>A Whysit is a destiny or reason for existence assigned to a Whosit by an unnamed higher being that oversees Generic.</p>
+<form action="/whysit" method="post">
+	<fieldset>
+		<legend>Enter information for a new Whysit</legend>
+		<label for="whysitDescription">Description of Whysit: </label>
+		<input id="whysitDescription" type="text" name="description" maxlength="100" required><br><br>
+		<input type="submit" name="whysitSubmit" value="Submit">
+	</fieldset>
+</form>
 <h3>Possible Whysits</h3>
 <table>
   <thead> 
@@ -13,12 +21,3 @@
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form action="/whysit" method="post">
-	<fieldset>
-		<legend>Enter information for a new Whysit</legend>
-		<label for="whysitDescription">Description of Whysit: </label>
-		<input id="whysitDescription" type="text" name="description" maxlength="100" required><br><br>
-		<input type="submit" name="whysitSubmit" value="Submit">
-	</fieldset>
-</form>

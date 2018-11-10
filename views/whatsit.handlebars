@@ -1,5 +1,15 @@
 <h1>The Whatsits of Generic</h1>
 <p>Generic requires tasks, or Whatsits, to maintain its existence. Each task has a level of importance from 0 (completely unnecessary) to 100 (absolutely essential).</p>
+<form action="/whatsit" method="post">
+	<fieldset>
+		<legend>Enter information for a new Whatsit</legend>
+		<label for="whatsitName">Name of Whatsit: </label>
+		<input id="whatsitName" type="text" name="name" maxlength="20" required><br>
+		<label for="importance">Importance to Generic: </label>
+		<input id="importance" type="number" name="importance" min="0" max="100" placeholder="0"><br><br>
+		<input type="submit" name="whatsitSubmit" value="Add Whatsit">
+	</fieldset>
+</form>
 <h3>Available Whatsits</h3>
 <table>
   <thead> 
@@ -15,14 +25,3 @@
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form action="/whatsit" method="post">
-	<fieldset>
-		<legend>Enter information for a new Whatsit</legend>
-		<label for="whatsitName">Name of Whatsit: </label>
-		<input id="whatsitName" type="text" name="name" maxlength="20" required><br>
-		<label for="importance">Importance to Generic: </label>
-		<input id="importance" type="number" name="importance" min="0" max="100" placeholder="0"><br><br>
-		<input type="submit" name="whatsitSubmit" value="Add Whatsit">
-	</fieldset>
-</form>

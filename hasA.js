@@ -3,7 +3,7 @@ module.exports = function() {
     var router = express.Router();
 
     function getHasAs(res, mysql, context, complete) {
-        mysql.pool.query("SELECT whosit.name AS whosit, whatsit.name AS whatsit FROM whosit INNER JOIN has_a H ON H.whosit_id = whosit.id INNER JOIN whatsit ON whatsit.id = H.whatsit_id", function(error, results, fields) {
+        mysql.pool.query("SELECT whosit.name AS whosit, whatsit.name AS whatsit FROM whosit INNER JOIN has_a H ON H.whosit_id = whosit.id INNER JOIN whatsit ON whatsit.id = H.whatsit_id ORDER BY whosit", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -14,7 +14,7 @@ module.exports = function() {
     }
 
     function getWhosits(res, mysql, context, complete) {
-        mysql.pool.query("SELECT id AS whosit_id, name FROM whosit", function(error, results, fields) {
+        mysql.pool.query("SELECT id AS whosit_id, name FROM whosit WHERE name NOT LIKE ' %' ORDER BY name", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -25,7 +25,7 @@ module.exports = function() {
     }
 
     function getWhatsits(res, mysql, context, complete) {
-        mysql.pool.query("SELECT id AS whatsit_id, name FROM whatsit", function(error, results, fields) {
+        mysql.pool.query("SELECT id AS whatsit_id, name FROM whatsit WHERE name NOT LIKE ' %' ORDER BY name", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -58,8 +58,13 @@ module.exports = function() {
         var inserts = [req.body.whosit_id, req.body.whatsit_id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
             if (error) {
-                res.write(JSON.stringify(error));
-                res.end();
+                if (error.code == "ER_DUP_ENTRY" ||
+                    error.code == "ER_NO_REFERENCED_ROW_2") {
+                    res.redirect('/hasA');
+                } else {
+                    res.write(JSON.stringify(error));
+                    res.end();
+                }
             } else {
                 res.redirect('/hasA');
             }

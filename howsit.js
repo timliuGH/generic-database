@@ -2,8 +2,19 @@ module.exports = function() {
     var express = require('express');
     var router = express.Router();
 
+    function cleanData(res, mysql, context, complete) {
+        mysql.pool.query("DELETE FROM howsit WHERE emotion LIKE ' %'", function(error, results, fields) {
+            if (error) {
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.howsit = results;
+            complete();
+        });
+    }
+
     function getHowsits(res, mysql, context, complete) {
-        mysql.pool.query("SELECT emotion FROM howsit", function(error, results, fields) {
+        mysql.pool.query("SELECT emotion FROM howsit ORDER BY emotion", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -18,10 +29,11 @@ module.exports = function() {
         var callbackCount = 0;
         var context = {};
         var mysql = req.app.get('mysql');
+        cleanData(res, mysql, context, complete);
         getHowsits(res, mysql, context, complete);
         function complete() {
             callbackCount++;
-            if (callbackCount >= 1) {  // Update for each asynchronous call
+            if (callbackCount >= 2) {  // Update for each asynchronous call
                 res.render('howsit', context);
             }
         }
@@ -36,6 +48,8 @@ module.exports = function() {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
+            } else if (!req.body.emotion.replace(/\s/g, '').length) {
+                res.render('invalidHowsit');
             } else {
                 res.redirect('/howsit');
             }

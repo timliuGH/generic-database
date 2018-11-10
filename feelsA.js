@@ -3,7 +3,7 @@ module.exports = function() {
     var router = express.Router();
 
     function getFeelsAs(res, mysql, context, complete) {
-        mysql.pool.query("SELECT name, emotion FROM whosit INNER JOIN feels_a F ON F.whosit_id = whosit.id INNER JOIN howsit ON howsit.id = F.howsit_id", function(error, results, fields) {
+        mysql.pool.query("SELECT name, emotion FROM whosit INNER JOIN feels_a F ON F.whosit_id = whosit.id INNER JOIN howsit ON howsit.id = F.howsit_id ORDER BY name", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -14,7 +14,7 @@ module.exports = function() {
     }
 
     function getWhosits(res, mysql, context, complete) {
-        mysql.pool.query("SELECT id, name FROM whosit", function(error, results, fields) {
+        mysql.pool.query("SELECT id, name FROM whosit WHERE name NOT LIKE ' %' ORDER BY name", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -25,7 +25,7 @@ module.exports = function() {
     }
 
     function getHowsits(res, mysql, context, complete) {
-        mysql.pool.query("SELECT id, emotion FROM howsit", function(error, results, fields) {
+        mysql.pool.query("SELECT id, emotion FROM howsit WHERE emotion NOT LIKE ' %' ORDER BY emotion", function(error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -58,8 +58,13 @@ module.exports = function() {
         var inserts = [req.body.whosit_id, req.body.howsit_id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
             if (error) {
-                res.write(JSON.stringify(error));
-                res.end();
+                if (error.code == "ER_DUP_ENTRY" || 
+                    error.code == "ER_NO_REFERENCED_ROW_2") {
+                    res.redirect('/feelsA')
+                } else {
+                    res.write(JSON.stringify(error));
+                    res.end();
+                }
             } else {
                 res.redirect('/feelsA');
             }

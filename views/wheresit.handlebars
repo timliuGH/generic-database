@@ -1,5 +1,15 @@
 <h1>The Wheresits of Generic</h1>
 <p>Generic is divided into regions called Wheresits. Each Wheresit has a temperature ranging from 0 (coldest) to 100 (hottest).</p>
+<form action="/wheresit" method="post">
+	<fieldset>
+		<legend>Enter information for a new Wheresit</legend>
+		<label for="wheresitName">Name of Wheresit: </label>
+		<input id="wheresitName" type="text" name="name" maxlength="20" required><br>
+		<label for="temperature">Temperature: </label>
+		<input id="temperature" type="number" name="temperature" min="0" max="100" placeholder="50" value="50"><br><br>
+		<input type="submit" name="wheresitSubmit" value="Submit">
+	</fieldset>
+</form>
 <h3>Known Wheresits</h3>
 <table>
   <thead> 
@@ -15,14 +25,3 @@
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form action="/wheresit" method="post">
-	<fieldset>
-		<legend>Enter information for a new Wheresit</legend>
-		<label for="wheresitName">Name of Wheresit: </label>
-		<input id="wheresitName" type="text" name="name" maxlength="20" required><br>
-		<label for="temperature">Temperature: </label>
-		<input id="temperature" type="number" name="temperature" min="0" max="100" placeholder="50"><br><br>
-		<input type="submit" name="wheresitSubmit" value="Submit">
-	</fieldset>
-</form>

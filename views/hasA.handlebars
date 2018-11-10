@@ -1,5 +1,25 @@
 <h1>Who does what?</h1>
 <p>Whatsits are completed by Whosits. Each Whosit does at least one Whatsit, and each Whatsit is done by at least one Whosit.</p>
+<form id="addHasA" action="/hasA" method="post">
+	<fieldset>
+		<legend>Enter a new Whatsit for a Whosit</legend>
+		<label for="whosit">Whosit: </label>
+		<select id="whosit" name="whosit_id" required>
+            <option value="">Choose a Whosit</option>
+			{{#each whosit}}
+            <option value="{{whosit_id}}">{{name}}</option>
+            {{/each}}
+		</select><br>
+		<label for="whatsit">Whatsit: </label>
+		<select id="whatsit" name="whatsit_id" required>
+            <option value="">Choose a Whatsit</option>
+			{{#each whatsit}}
+            <option value="{{whatsit_id}}">{{name}}</option>
+            {{/each}}
+		</select><br><br>
+		<input type="submit" name="hasASubmit" value="Submit">
+	</fieldset>
+</form>
 <h3>Whatsits Assigned to Whosits</h3>
 <table>
   <thead> 
@@ -11,26 +31,8 @@
       <tr> 
           <td>{{whosit}}</td> 
           <td>{{whatsit}}</td>
+          <td><button onclick="deleteHasA({{id}})">Delete</button></td>
       </tr> 
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form id="addHasA" action="/hasA" method="post">
-	<fieldset>
-		<legend>Enter a new Whatsit for a Whosit</legend>
-		<label for="whosit">Whosit: </label>
-		<select id="whosit" name="whosit_id">
-			{{#each whosit}}
-            <option value="{{whosit_id}}">{{name}}</option>
-            {{/each}}
-		</select><br>
-		<label for="whatsit">Whatsit: </label>
-		<select id="whatsit" name="whatsit_id">
-			{{#each whatsit}}
-            <option value="{{whatsit_id}}">{{name}}</option>
-            {{/each}}
-		</select><br><br>
-		<input type="submit" name="hasASubmit" value="Submit">
-	</fieldset>
-</form>

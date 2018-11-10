@@ -108,8 +108,13 @@ CREATE TABLE `has_a` (
     `whosit_id` int(11) NOT NULL,
     `whatsit_id` int(11) NOT NULL,
     PRIMARY KEY (`whosit_id`, `whatsit_id`),
-    FOREIGN KEY (`whosit_id`) REFERENCES `whosit` (`id`),
-    FOREIGN KEY (`whatsit_id`) REFERENCES `whatsit` (`id`)
+    CONSTRAINT fk_has_a
+        FOREIGN KEY (`whosit_id`) 
+        REFERENCES `whosit` (`id`)
+        ON DELETE CASCADE,
+        FOREIGN KEY (`whatsit_id`) 
+        REFERENCES `whatsit` (`id`)
+        ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -128,8 +133,13 @@ CREATE TABLE `feels_a` (
     `whosit_id` int(11) NOT NULL,
     `howsit_id` int(11) NOT NULL,
     PRIMARY KEY (`whosit_id`, `howsit_id`),
-    FOREIGN KEY (`whosit_id`) REFERENCES `whosit` (`id`),
-    FOREIGN KEY (`howsit_id`) REFERENCES `howsit` (`id`)
+    CONSTRAINT fk_feels_a
+        FOREIGN KEY (`whosit_id`) 
+        REFERENCES `whosit` (`id`)
+        ON DELETE CASCADE,
+        FOREIGN KEY (`howsit_id`) 
+        REFERENCES `howsit` (`id`)
+        ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 --
@@ -142,8 +152,18 @@ INSERT INTO `feels_a` VALUES (1,3),(2,1),(3,2);
 -- Adding foreign keys to table `whosit`
 --
 
-ALTER TABLE `whosit` ADD FOREIGN KEY (`home`) REFERENCES `wheresit` (`id`);
-ALTER TABLE `whosit` ADD FOREIGN KEY (`destiny`) REFERENCES `whysit` (`id`);
+-- ALTER TABLE `whosit` ADD FOREIGN KEY (`home`) REFERENCES `wheresit` (`id`) ON DELETE CASCADE;
+ALTER TABLE `whosit` 
+ADD CONSTRAINT fk_who_where
+    FOREIGN KEY (`home`)
+    REFERENCES `wheresit` (`id`)
+    ON DELETE CASCADE;
+-- ALTER TABLE `whosit` ADD FOREIGN KEY (`destiny`) REFERENCES `whysit` (`id`) ON DELETE CASCADE;
+ALTER TABLE `whosit`
+ADD CONSTRAINT fk_who_why
+    FOREIGN KEY (`destiny`)
+    REFERENCES `whysit` (`id`)
+    ON DELETE CASCADE;
 
 SET sql_notes = 1;
 SET foreign_key_checks = 1;

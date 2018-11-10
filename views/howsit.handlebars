@@ -1,5 +1,13 @@
 <h1>The Howsits of Generic</h1>
 <p>Howsits are the emotional states experienced by Whosits.</p>
+<form action="/howsit" method="post">
+	<fieldset>
+		<legend>Enter information for a new Howsit</legend>
+		<label for="emotion">Emotional state: </label>
+		<input id="emotion" type="text" name="emotion" maxlength="20" required><br><br>
+		<input type="submit" name="howsitSubmit" value="Submit">
+	</fieldset>
+</form>
 <h3>Possible Howsits</h3>
 <table>
   <thead> 
@@ -13,12 +21,3 @@
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form action="/howsit" method="post">
-	<fieldset>
-		<legend>Enter information for a new Howsit</legend>
-		<label for="emotion">Emotional state: </label>
-		<input id="emotion" type="text" name="emotion" maxlength="20" required><br><br>
-		<input type="submit" name="howsitSubmit" value="Submit">
-	</fieldset>
-</form>

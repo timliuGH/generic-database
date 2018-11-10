@@ -1,5 +1,28 @@
 <h1>The Whosits of Generic</h1>
 <p>The Whosits are the inhabitants of Generic. Each Whosit has one home, or Wheresit, and one destiny, or Whysit.</p>
+<form id="addWhosit" action="/whosit" method="post">
+  <fieldset>
+    <legend>Enter information for a new Whosit</legend>
+
+    <label for="whositName">Name of Whosit: </label>
+    <input id="whositName" type="text" name="name" maxlength="100" required><br>
+    <label for="whositHome">Home of Whosit: </label>
+    <select id="whositHome" name="home" required>
+      <option value="">Choose a Wheresit</option>
+      {{#each wheresit}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select><br>
+    <label for="destiny">Destiny of Whosit: </label>
+    <select id="destiny" name="destiny" required>
+      <option value="">Choose a Whysit</option>
+      {{#each whysit}}
+      <option value="{{id}}">{{description}}</option>
+      {{/each}}
+    </select><br><br>
+    <input type="submit" name="whositSubmit" value="Submit">
+  </fieldset>
+</form>
 <h3>Current Whosits</h3>
 <form id="search_whosit" action="" method="">
     <label for="filter">Search by Home: </label>
@@ -25,25 +48,3 @@
       {{/each}} 
   </tbody>
 </table>
-<br><br>
-<form id="addWhosit" action="/whosit" method="post">
-	<fieldset>
-		<legend>Enter information for a new Whosit</legend>
-
-		<label for="whositName">Name of Whosit: </label>
-		<input id="whositName" type="text" name="name" maxlength="100" required><br>
-		<label for="whositHome">Home of Whosit: </label>
-		<select id="whositHome" name="home" required>
-			{{#each wheresit}}
-            <option value="{{id}}">{{name}}</option>
-            {{/each}}
-		</select><br>
-		<label for="destiny">Destiny of Whosit: </label>
-		<select id="destiny" name="destiny" required>
-			{{#each whysit}}
-            <option value="{{id}}">{{description}}</option>
-            {{/each}}
-		</select><br><br>
-		<input type="submit" name="whositSubmit" value="Submit">
-	</fieldset>
-</form>
