@@ -1,5 +1,5 @@
 <h1>Who does what?</h1>
-<p>Whatsits are completed by Whosits. Each Whosit does at least one Whatsit, and each Whatsit is done by at least one Whosit.</p>
+<p>Whatsits are completed by Whosits. Each Whosit does zero or more Whatsits, and each Whatsit is done by zero or more Whosits.</p>
 <form id="addHasA" action="/hasA" method="post">
 	<fieldset>
 		<legend>Enter a new Whatsit for a Whosit</legend>
@@ -31,7 +31,7 @@
       <tr> 
           <td>{{whosit}}</td> 
           <td>{{whatsit}}</td>
-          <td><button onclick="deleteHasA({{id}})">Delete</button></td>
+          <td><button onclick="deleteHasA({{whosit_id}},{{whatsit_id}})">Delete</button></td>
       </tr> 
       {{/each}} 
   </tbody>

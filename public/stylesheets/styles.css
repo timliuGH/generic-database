@@ -19,3 +19,7 @@ table, th, td {
 td {
     padding: 0 10px;
 }
+
+#filterButton {
+    margin-left: 20px;
+}

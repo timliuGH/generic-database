@@ -24,12 +24,15 @@
   </fieldset>
 </form>
 <h3>Current Whosits</h3>
-<form id="search_whosit" action="" method="">
-    <label for="filter">Search by Home: </label>
-    <input id="search_string" type="text" name="search_string" value="">
-    <input type="button" value="search" onclick="search()">
-</form>
-<br>
+<form id="search" action="/whosit/search" method="get">
+    <label for="whositHome">Filter by Wheresit: </label>
+    <select id="whositHome" name="home" required>
+      <option value="">Choose a Wheresit</option>
+      {{#each wheresit}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select><button id="filterButton">Filter</button>
+</form><br>
 <table>
   <thead> 
       <th>Name</th> 
@@ -43,7 +46,7 @@
           <td>{{home}}</td> 
           <td>{{destiny}}</td>
           <td><button onclick="deleteWhosit({{id}})">Delete</button></td>
-          <td><a href="/people/{{id}}">Update</a></td>
+          <td><a href="/whosit/{{id}}">Update</a></td>
       </tr> 
       {{/each}} 
   </tbody>

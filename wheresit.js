@@ -2,6 +2,7 @@ module.exports = function() {
     var express = require('express');
     var router = express.Router();
 
+    /* Remove entries with just spaces and no text */
     function cleanData(res, mysql, context, complete) {
         mysql.pool.query("DELETE FROM wheresit WHERE name LIKE ' %'", function(error, results, fields) {
             if (error) {
@@ -13,6 +14,7 @@ module.exports = function() {
         });
     }
 
+    /* SELECT Wheresits to populate table */
     function getWheresits(res, mysql, context, complete) {
         mysql.pool.query("SELECT name, temperature FROM wheresit ORDER BY name", function(error, results, fields) {
             if (error) {

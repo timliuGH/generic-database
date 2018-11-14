@@ -2,19 +2,23 @@
 <html>
 <head>
 	<title>Database of Generic</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    {{#each jsscripts}}
+    <script src="/static/{{this}}"></script>
+    {{/each}}
 	<link rel="stylesheet" href="/stylesheets/styles.css">
 </head>
 <body>
 	<nav>
 		<ul>
-			<li><a href="./index">Home</a></li>
-			<li><a href="./whosit">Whosits</a></li>
-			<li><a href="./wheresit">Wheresits</a></li>
-			<li><a href="./whatsit">Whatsits</a></li>
-			<li><a href="./hasA">Who Does What</a></li>
-			<li><a href="./howsit">Howsits</a></li>
-			<li><a href="./feelsA">Who Feels How</a></li>
-			<li><a href="./whysit">Whysits</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/whosit">Whosits</a></li>
+			<li><a href="/wheresit">Wheresits</a></li>
+			<li><a href="/whatsit">Whatsits</a></li>
+			<li><a href="/hasA">Who Does What</a></li>
+			<li><a href="/howsit">Howsits</a></li>
+			<li><a href="/feelsA">Who Feels How</a></li>
+			<li><a href="/whysit">Whysits</a></li>
 		</ul>
 	</nav>
 	{{{body}}}

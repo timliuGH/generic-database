@@ -1,34 +1,24 @@
-<h3>Please make the necessary changes in the form below.</h3>
+<h3>Please make the necessary changes to {{whosit.name}} in the form below.</h3>
 
-<form action="/" method="post">
+<form id="updateWhosit" action="/whosit" method="post">
 	<fieldset>
 		<legend>Update Whosit Entry</legend>
-
 		<label for="whositName">Name of Whosit: </label>
-		<input id="whositName" type="text" name="whositName" value="{{whositName}}" maxlength="100">
-
-		<br>
-
+		<input id="whositName" type="text" name="name" value="{{whosit.name}}" maxlength="100"><br>
 		<label for="whositHome">Home of Whosit: </label>
-		<select id="whositHome" name="whositHome">
-			<option value="{{wheresitID}}">{{whositHome}}</option>
-			{{#each wheresit}}
-      <option value="{{wheresitID}}">{{wheresitName}}</option>
-      {{/each}}
-		</select>
-
-		<br>
-
+		<select id="whositHome" name="home">
+            {{#each wheresit}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+		</select><br>
 		<label for="destiny">Destiny of Whosit: </label>
 		<select id="destiny" name="destiny">
-			<option value="{{whysitID}}">{{destiny}}</option>
-			{{#each wheresit}}
-       <option value="{{whysitID}}">{{whysitDescription}}</option>
-       {{/each}}
-		</select>
-
-		<br>		
-
-		<button name="updateWhosit" value="{{whositID}}">Update Whosit</button>
+            {{#each whysit}}
+            <option value="{{id}}">{{description}}</option>
+            {{/each}}
+		</select><br>		
 	</fieldset>
 </form>
+<button onclick="updateWhosit({{whosit.id}})">Update</button>
+<script defer>selectWheresit({{whosit.home}});</script>
+<script defer>selectWhysit({{whosit.destiny}});</script>
