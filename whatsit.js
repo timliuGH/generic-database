@@ -9,8 +9,8 @@ module.exports = function() {
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.whatsit = results;
-            complete();
+            //context.whatsit = results;
+            //complete();
         });
     }
 
@@ -35,7 +35,7 @@ module.exports = function() {
         getWhatsits(res, mysql, context, complete);
         function complete() {
             callbackCount++;
-            if (callbackCount >= 2) {  // Update for each asynchronous call
+            if (callbackCount >= 1) {  // Update for each asynchronous call
                 res.render('whatsit', context);
             }
         }

@@ -9,8 +9,8 @@ module.exports = function() {
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.whosit = results;
-            complete();
+            //context.whosit = results;
+            //complete();
         });
     }
 
@@ -87,7 +87,7 @@ module.exports = function() {
         getWhysits(res, mysql, context, complete);
         function complete() {
             callbackCount++;
-            if (callbackCount >= 4) {  // Update for each asynchronous call
+            if (callbackCount >= 3) {  // Update for each asynchronous call
                 res.render('whosit', context);
             }
         }

@@ -9,7 +9,7 @@ app.engine('handlebars', handlebars.engine);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
-app.set('port', 17014);
+app.set('port', 10376);
 app.set('mysql', mysql);
 app.use('/whosit', require('./whosit.js'));
 app.use('/wheresit', require('./wheresit.js'));

@@ -8,8 +8,8 @@ module.exports = function() {
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.howsit = results;
-            complete();
+            //context.howsit = results;
+            //complete();
         });
     }
 
@@ -33,7 +33,7 @@ module.exports = function() {
         getHowsits(res, mysql, context, complete);
         function complete() {
             callbackCount++;
-            if (callbackCount >= 2) {  // Update for each asynchronous call
+            if (callbackCount >= 1) {  // Update for each asynchronous call
                 res.render('howsit', context);
             }
         }
