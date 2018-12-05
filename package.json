@@ -2,7 +2,7 @@
   "name": "generic_db",
   "version": "1.0.0",
   "description": "Database of the Generic World",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0"
   }
 }
